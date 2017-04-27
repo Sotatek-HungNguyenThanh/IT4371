@@ -23,7 +23,7 @@
         }
         .modal-body {
             min-height: 290px;
-        }o
+        }
     </style>
     <!-- EOF CSS INCLUDE -->
     @yield("css")
