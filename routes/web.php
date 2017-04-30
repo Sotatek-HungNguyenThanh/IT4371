@@ -58,8 +58,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', 'LoginController@logout');
 
+    Route::get('/manage-password', 'AccountController@getManagePasswordPage');
+
+    Route::get('/update-info', 'AccountController@getUpdateInfoPage');
+
     Route::post('update-password', 'AccountController@updatePassword');
 
     Route::post('update-avatar', 'AccountController@updateAvatar');
 
 });
+
+Route::get('test', 'HomeController@test');

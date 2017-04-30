@@ -62,8 +62,6 @@
     <div class="page-content">
         <!-- START X-NAVIGATION VERTICAL -->
         @include('user.header')
-        <ul class="breadcrumb">
-        </ul>
         <!-- END BREADCRUMB -->
 
         <div class="page-title">

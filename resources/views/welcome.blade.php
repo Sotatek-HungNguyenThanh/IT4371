@@ -75,9 +75,19 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script type="text/javascript" src="/js/angular/core/component.js"></script>
+        <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
+        <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
+        <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
+        <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
+        <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
+        <script type="text/javascript" src="/js/angular/core/TestController.js"></script>
+
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+    <body ng-app="myApp">
+        <div class="flex-center position-ref full-height"  ng-controller="TestController as controller">
             {{--@if (Route::has('login'))--}}
                 {{--<div class="top-right links">--}}
                     {{--@if (Auth::check())--}}

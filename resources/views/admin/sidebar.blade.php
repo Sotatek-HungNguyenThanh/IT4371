@@ -1,6 +1,6 @@
 <ul class="x-navigation">
     <li class="xn-logo">
-        <a href="/">Admin</a>
+        <a href="/">ADMIN</a>
         <a href="#" class="x-navigation-control"></a>
     </li>
     <li class="xn-profile">

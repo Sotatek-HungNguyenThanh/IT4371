@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('/img/no-image.jpg');
             $table->string('telephone')->nullable();
             $table->string('address')->nullable();
+            $table->enum('status',['active', 'inactive'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });

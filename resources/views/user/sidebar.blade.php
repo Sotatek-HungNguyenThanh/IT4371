@@ -1,16 +1,16 @@
 <ul class="x-navigation">
     <li class="xn-logo">
-        <a href="/">User</a>
+        <a href="/">USER</a>
         <a href="#" class="x-navigation-control"></a>
     </li>
     <li class="xn-profile">
         <a href="#" class="profile-mini">
-            <img src="/img/no-image.jpg"/>
+            <img src="{{url(Auth::user()->avatar)}}"/>
         </a>
         <div class="profile">
             <div class="profile-image" id="choose_profile">
                 <label for="chooseFile" >
-                    <img src="/img/no-image.jpg"/>
+                    <img src="{{url(Auth::user()->avatar)}}"/>
                 </label>
                 <input type="file" class="upload" id="chooseFile" name="fileImg" style="visibility:hidden"/>
             </div>
@@ -23,14 +23,14 @@
     </li>
     <li class="xn-title">Account</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Account Info</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Change Password</span></a>
+        <a href="/update-info"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thay đổi thông tin</span></a>
+        <a href="/manage-password"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Quản lý mật khẩu</span></a>
+        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Lịch sử giao dịch</span></a>
     </li>
     <li class="xn-title">Transaction</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Deposit</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Withdraw</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Transfers</span></a>
+        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thanh toán</span></a>
+        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
     </li>
 </ul>
 <script>

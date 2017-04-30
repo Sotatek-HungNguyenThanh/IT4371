@@ -1,16 +1,16 @@
 <ul class="x-navigation">
     <li class="xn-logo">
-        <a href="/">Admin</a>
+        <a href="/">STAFF</a>
         <a href="#" class="x-navigation-control"></a>
     </li>
     <li class="xn-profile">
         <a href="#" class="profile-mini">
-            <img src="/img/no-image.jpg"/>
+            <img src="{{url(Auth::guard('staff')->user()->avatar)}}"/>
         </a>
         <div class="profile">
             <div class="profile-image" id="choose_profile">
                 <label for="chooseFile" >
-                    <img src="/img/no-image.jpg"/>
+                    <img src="{{url(Auth::guard('staff')->user()->avatar)}}"/>
                 </label>
                 <input type="file" class="upload" id="chooseFile" name="fileImg" style="visibility:hidden"/>
             </div>
@@ -29,12 +29,6 @@
     <li class="xn-title">Manage Customers</li>
     <li>
         <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List User</span></a>
-    </li>
-    <li class="xn-title">Transaction</li>
-    <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Deposit</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Withdraw</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Transfers</span></a>
     </li>
 </ul>
 <script>
