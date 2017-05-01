@@ -50,6 +50,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>

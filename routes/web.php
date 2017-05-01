@@ -70,6 +70,10 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
 
     Route::post('create-customer', 'Staff\StaffController@createCustomer');
 
+    Route::get('add-money', 'Staff\StaffController@getAddMoneyPage');
+
+    Route::post('/deposit-money-account', 'Staff\StaffController@depositMoneyAccount');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

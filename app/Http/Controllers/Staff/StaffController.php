@@ -8,11 +8,10 @@
 
 namespace App\Http\Controllers\Staff;
 
-
-use App\Bank_Account;
 use App\BankAccount;
 use App\Card;
 use App\Consts;
+use App\Facades\UserService;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Utils;
@@ -62,6 +61,34 @@ class StaffController extends Controller
                 'alert-error' => 'Account existed!'
             ];
             return redirect()->back()->withErrors($errors);
+        }
+    }
+
+    public function getAddMoneyPage(){
+        return view('staff.add_money');
+    }
+
+    public function depositMoneyAccount(Request $request){
+        $params = json_decode($request->input('params'));
+        DB::beginTransaction();
+        try{
+            $depositTransaction = $params->deposit_transaction;
+
+            $bankAccount = BankAccount::where("account_number", $depositTransaction->account_number)->firstOrFail();
+
+            if(empty($bankAccount)) {
+                return array("status" => Consts::ERROR, "message" => "Invalid params");
+            }
+            $bankAccount = UserService::depositBankAccount($bankAccount->id, $depositTransaction->amount);
+
+            UserService::createDepositTransaction($bankAccount, $depositTransaction);
+
+            DB::commit();
+            return array("status" => Consts::SUCCESS, "message" => "create transaction success");
+        }catch (Exception $e){
+            DB::rollback();
+            Log::error($e->getMessage());
+            return array("status" => Consts::ERROR, "message" => $e->getMessage());
         }
     }
 }

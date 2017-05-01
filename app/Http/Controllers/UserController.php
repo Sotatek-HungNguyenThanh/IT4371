@@ -34,7 +34,7 @@ class UserController extends Controller
         try{
             $bank_account = $params->bank_account;
             $pay_transaction = $params->pay_transaction;
-            $bankAccount = UserService::updateBankAccount($bank_account->bank_account_id, $pay_transaction->amount);
+            $bankAccount = UserService::withdrawBankAccount($bank_account->bank_account_id, $pay_transaction->amount);
             if(empty($bankAccount)) {
                 return array("status" => Consts::ERROR, "message" => "Invalid params");
             }
@@ -57,7 +57,7 @@ class UserController extends Controller
             $bank_account = $params->bank_account;
             $transferTransaction = $params->transfer_transaction;
 
-            $bankAccount = UserService::updateBankAccount($bank_account->bank_account_id, $transferTransaction->amount);
+            $bankAccount = UserService::withdrawBankAccount($bank_account->bank_account_id, $transferTransaction->amount);
             if(empty($bankAccount)) {
                 return array("status" => Consts::ERROR, "message" => "Invalid params");
             }

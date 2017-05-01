@@ -21,7 +21,7 @@ class UserService
         return $bankAccountInfo;
     }
 
-    public function updateBankAccount($bankAccountID, $amount){
+    public function withdrawBankAccount($bankAccountID, $amount){
         $bankAccount = BankAccount::findOrFail($bankAccountID);
         if($amount > $bankAccount->balance){
             return null;
@@ -82,5 +82,25 @@ class UserService
             ->orderBy('transactions.date', 'desc')
             ->get();
         return $historyTransactions;
+    }
+
+    public function createDepositTransaction($bankAccount, $depositTransaction){
+        $transaction = new Transaction();
+        $transaction->type = Consts::DEPOSIT;
+        $transaction->sender_name = $depositTransaction->sender_name;
+        $transaction->bank_account_id =  $bankAccount->id;
+        $transaction->bank_account_number = $bankAccount->account_number;
+        $transaction->amount = $depositTransaction->amount;
+        $transaction->date = Carbon::parse($depositTransaction->date);
+        if(isset($depositTransaction->content))
+            $transaction->content = $depositTransaction->content;
+        $transaction->save();
+    }
+
+    public function depositBankAccount($bankAccountID, $amount){
+        $bankAccount = BankAccount::findOrFail($bankAccountID);
+        $bankAccount->balance =  $bankAccount->balance + $amount;
+        $bankAccount->save();
+        return $bankAccount;
     }
 }

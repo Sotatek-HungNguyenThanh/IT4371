@@ -33,6 +33,13 @@
     <li>
         <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm người dùng chung thẻ</span></a>
     </li>
+    <li>
+        <a href="/staff/add-money"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm tiền vào tài khoản</span></a>
+    </li>
+
+    <li>
+        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
+    </li>
 </ul>
 <script>
     $(document).ready(function () {

@@ -16,8 +16,9 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('type', ['deposit', 'withdraw', 'transfer']);
-            $table->integer('sender_id');
-            $table->string('receiver_name');
+            $table->integer('sender_id')->nullable();
+            $table->string('sender_name')->nullable();
+            $table->string('receiver_name')->nullable();
             $table->integer('card_id')->nullable();
             $table->string("bank_account_number")->nullable();
             $table->integer('bank_account_id')->nullable();
