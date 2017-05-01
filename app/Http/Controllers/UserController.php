@@ -24,6 +24,10 @@ class UserController extends Controller
         return view('user.transfer');
     }
 
+    public function getHistoryPage(){
+        return view('user.history');
+    }
+
     public function createPayTransaction(Request $request){
         $params = json_decode($request->input('params'));
         DB::beginTransaction();
@@ -67,5 +71,13 @@ class UserController extends Controller
             Log::error($e->getMessage());
             return array("status" => Consts::ERROR, "message" => $e->getMessage());
         }
+    }
+
+    protected function guard(){
+        return Auth::guard();
+    }
+
+    public function getHistoryTransaction(){
+        return UserService::getHistoryTransaction();
     }
 }

@@ -28,6 +28,14 @@ angular.module('UserService', [])
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(params)
                 });
+            },
+
+            getHistoryTransaction: function () {
+                return $http({
+                    method: 'POST',
+                    url: '/get-history-transaction',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
             }
         };
         return angular.extend(BaseService, UserService);

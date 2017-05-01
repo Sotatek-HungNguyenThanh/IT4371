@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\BankAccount;
+use App\Card;
 use App\Consts;
 use App\Transaction;
 use App\User;
@@ -64,5 +65,22 @@ class UserService
 
     protected function guard(){
         return Auth::guard();
+    }
+
+    public function getHistoryTransaction(){
+        $userID = $this->guard()->user()->id;
+        $cardInfo =  Card::where('user_id', $userID)->first();
+
+        $historyTransactions =Transaction::join('users as sender', 'sender.id', 'transactions.sender_id')
+            ->leftJoin('cards', 'cards.id', 'transactions.card_id')
+            ->leftJoin('bank_accounts', 'bank_accounts.id', 'transactions.bank_account_id')
+            ->select('transactions.id as transaction_id', 'transactions.type', 'sender.name',
+                'receiver_name', 'cards.card_number', 'transactions.bank_account_number',
+                'bank_accounts.account_number', 'transactions.amount', 'transactions.date', 'transactions.content')
+            ->where('sender_id', $userID)
+            ->orWhere('transactions.bank_account_id', $cardInfo["bank_account_id"])
+            ->orderBy('transactions.date', 'desc')
+            ->get();
+        return $historyTransactions;
     }
 }

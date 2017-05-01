@@ -96,9 +96,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('transfer', 'UserController@getTransferPage');
 
+    Route::get('history', 'UserController@getHistoryPage');
+
     Route::post('create-pay-transaction', 'UserController@createPayTransaction');
 
     Route::post('create-transfer-transaction', 'UserController@createTransferTransaction');
+
+    Route::post('get-history-transaction', 'UserController@getHistoryTransaction');
 
 });
 

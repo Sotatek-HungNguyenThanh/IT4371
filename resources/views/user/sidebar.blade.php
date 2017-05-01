@@ -25,7 +25,7 @@
     <li>
         <a href="/update-info"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thay đổi thông tin</span></a>
         <a href="/manage-password"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Quản lý mật khẩu</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Lịch sử giao dịch</span></a>
+        <a href="/history"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Lịch sử giao dịch</span></a>
     </li>
     <li class="xn-title">Transaction</li>
     <li>
