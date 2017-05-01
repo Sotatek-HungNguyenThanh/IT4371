@@ -1,22 +1,3 @@
-var myApp = angular.module('myApp', ['BaseService','BaseFilter']);
-myApp.directive('fileChange', ['$parse', function($parse) {
-
-    return {
-        require: 'ngModel',
-        restrict: 'A',
-        link: function ($scope, element, attrs, ngModel) {
-
-            var attrHandler = $parse(attrs['fileChange']);
-
-            var handler = function (e) {
-
-                $scope.$apply(function () {
-                    attrHandler($scope, { $event: e, files: e.target.files });
-                });
-            };
-            // Attach the handler to the HTML change event
-            element[0].addEventListener('change', handler, false);
-        }
-    };
-}])
-;
+var userApp = angular.module('userApp', ['BaseService','BaseFilter', 'UserService']);
+var staffApp = angular.module('staffApp', ['BaseService','BaseFilter', 'StaffService']);
+var adminApp = angular.module('adminApp', ['BaseService','BaseFilter', 'AdminService']);

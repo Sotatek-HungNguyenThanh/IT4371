@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Home
+    Manage password
 @endsection
 
 @section('css')
@@ -69,22 +69,35 @@
         }
     </style>
 @endsection
-
 @section('page_content')
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="container-content">
-                    <form>
+                    <form action="/update-password" method="post">
+                        {{ csrf_field() }}
                         <div class="container-header">
                             Đổi mật khẩu
                         </div>
                         <div class="container-body">
+                            @if(Session::has('alert-success'))
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> {{Session::get('alert-success') }}
+                                </div>
+                            @endif
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="row">
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" placeholder="Mật khẩu cũ">
-                                    <input type="text" class="form-control" placeholder="Mật khẩu mới">
-                                    <input type="text" class="form-control" placeholder="Nhập lại mật khẩu mới">
+                                    <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu cũ" required>
+                                    <input type="password" name="new_password"  class="form-control" placeholder="Mật khẩu mới" required>
                                 </div>
                             </div>
                             <div class="row">

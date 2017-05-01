@@ -23,8 +23,8 @@
     </li>
     <li class="xn-title">Account</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Account Info</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Change Password</span></a>
+        <a href="/admin/update-info"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thay đổi thông tin</span></a>
+        <a href="/admin/manage-password"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Quản lý mật khẩu</span></a>
     </li>
     <li class="xn-title">Manage Staff</li>
     <li>

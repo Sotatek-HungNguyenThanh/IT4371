@@ -33,6 +33,10 @@
             background-color: transparent;
             box-shadow: none;
         }
+        .form-control[disabled], .form-control[readonly]{
+            background: white;
+            color: #555;
+        }
     </style>
     <!-- EOF CSS INCLUDE -->
     @yield("css")
@@ -49,6 +53,7 @@
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/AdminService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
@@ -62,7 +67,7 @@
     @yield("script")
 </head>
 <body>
-<div class="page-container" ng-app="myApp">
+<div class="page-container" ng-app="adminApp">
     <div class="page-sidebar">
         <!-- START X-NAVIGATION -->
     @include('admin.sidebar')
@@ -71,8 +76,6 @@
     <div class="page-content">
         <!-- START X-NAVIGATION VERTICAL -->
         @include('admin.header')
-        <ul class="breadcrumb">
-        </ul>
         <!-- END BREADCRUMB -->
 
         <div class="page-title">

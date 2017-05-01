@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Foundation;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Exception;
 
 /**
  * Created by PhpStorm.
@@ -15,22 +18,6 @@ use Illuminate\Support\Facades\Storage;
  */
 trait AccountUser
 {
-    public function updatePassword(Request $request){
-        $newPassword = $request->new_password;
-        $oldPassword = $request->old_password;
-        $user = $this->guard()->user();
-        if (Hash::check($oldPassword, $user->password))
-        {
-            $user->password = bcrypt($newPassword);
-            $user->save();
-            $request->session()->flash('alert-success', 'Password change success!');
-            return redirect()->back();
-        }
-        $errors = [
-            'alert-error' => 'Password wrong!'
-        ];
-        return redirect()->back()->withErrors($errors);
-    }
 
     public function updateAvatar(Request $request){
         $params = $request->all();
@@ -47,5 +34,51 @@ trait AccountUser
 
     protected function guard(){
         return Auth::guard();
+    }
+
+    protected function model(){
+        return app(User::class);
+    }
+
+    public function getAccountInfo(){
+        return $this->guard()->user();
+    }
+
+    public function updateAccountInfo(Request $request){
+        try {
+            $params = $request->all();
+            $user = $this->model()->firstOrNew(['email' => $this->guard()->user()->email]);
+            $user->name = $params['name'];
+            $user->address = $params['address'];
+            $user->telephone = $params['telephone'];
+            $user->save();
+            $request->session()->flash('alert-success', 'Information update!');
+            return redirect()->back();
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            $errors = [
+                'alert-error' => 'Error! Information not update'
+            ];
+            return redirect()->back()->withErrors($errors);
+        }
+    }
+    public function updatePassword(Request $request){
+        try {
+            $params = $request->all();
+            $user = $this->guard()->user();
+            if (Hash::check($params['old_password'], $user->password)) {
+                $user->password =  Hash::make($params['new_password']);
+                $user->save();
+                $request->session()->flash('alert-success', 'Password change success!');
+                return redirect()->back();
+            }else{
+                $errors = [
+                    'alert-error' => 'Password wrong!'
+                ];
+                return redirect()->back()->withErrors($errors);
+            }
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+        }
     }
 }

@@ -1,8 +1,8 @@
-@extends('user.layout')
+@extends('admin.layout')
 
 
 @section('title')
-    Update Info
+    Manage password
 @endsection
 
 @section('css')
@@ -69,19 +69,16 @@
         }
     </style>
 @endsection
-@section('script')
-    <script type="text/javascript" src="/js/angular/user/AccountController.js"></script>
-@endsection
 
 @section('page_content')
-    <div class="row" ng-controller="AccountController as controller">
+    <div class="row">
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="container-content">
-                    <form action="/update-account-info" method="post">
+                    <form action="/admin/update-password" method="post">
                         {{ csrf_field() }}
                         <div class="container-header">
-                            Thông tin cá nhân
+                            Đổi mật khẩu
                         </div>
                         <div class="container-body">
                             @if(Session::has('alert-success'))
@@ -100,17 +97,8 @@
                             @endif
                             <div class="row">
                                 <div class="col-md-9">
-                                    <div class="col-md-9">
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required
-                                               ng-model="controller.account.name">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" disabled
-                                               ng-model="controller.account.email">
-                                        <input type="text" class="form-control" placeholder="Điện thoại"
-                                               name="telephone" pattern="[0-9]{10,11}"
-                                               minlength="10" maxlength="11" required ng-model="controller.account.telephone">
-                                        <input type="text" name="address" class="form-control" placeholder="Address"
-                                               ng-model="controller.account.address">
-                                    </div>
+                                    <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu cũ" required>
+                                    <input type="password" name="new_password"  class="form-control" placeholder="Mật khẩu mới" required>
                                 </div>
                             </div>
                             <div class="row">

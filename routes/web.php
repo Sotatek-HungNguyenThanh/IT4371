@@ -38,6 +38,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::post('update-avatar', 'Admin\AccountController@updateAvatar');
 
+    Route::get('/manage-password', 'Admin\AccountController@getManagePasswordPage');
+
+    Route::get('/update-info', 'Admin\AccountController@getUpdateInfoPage');
+
+    Route::post('update-account-info', 'Admin\AccountController@updateAccountInfo');
+
+    Route::post('get-account-info', 'Admin\AccountController@getAccountInfo');
+
 });
 
 Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
@@ -49,6 +57,14 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
     Route::post('update-password', 'Staff\AccountController@updatePassword');
 
     Route::post('update-avatar', 'Staff\AccountController@updateAvatar');
+
+    Route::get('/manage-password', 'Staff\AccountController@getManagePasswordPage');
+
+    Route::get('/update-info', 'Staff\AccountController@getUpdateInfoPage');
+
+    Route::post('update-account-info', 'Staff\AccountController@updateAccountInfo');
+
+    Route::post('get-account-info', 'Staff\AccountController@getAccountInfo');
 
 });
 
@@ -65,6 +81,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('update-password', 'AccountController@updatePassword');
 
     Route::post('update-avatar', 'AccountController@updateAvatar');
+
+    Route::post('get-account-info', 'AccountController@getAccountInfo');
+
+    Route::post('update-account-info', 'AccountController@updateAccountInfo');
 
 });
 

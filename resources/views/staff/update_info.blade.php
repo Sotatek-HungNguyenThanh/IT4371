@@ -1,4 +1,4 @@
-@extends('user.layout')
+@extends('staff.layout')
 
 
 @section('title')
@@ -70,15 +70,14 @@
     </style>
 @endsection
 @section('script')
-    <script type="text/javascript" src="/js/angular/user/AccountController.js"></script>
+    <script type="text/javascript" src="/js/angular/staff/AccountController.js"></script>
 @endsection
-
 @section('page_content')
     <div class="row" ng-controller="AccountController as controller">
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="container-content">
-                    <form action="/update-account-info" method="post">
+                    <form action="/staff/update-account-info" method="post">
                         {{ csrf_field() }}
                         <div class="container-header">
                             Thông tin cá nhân

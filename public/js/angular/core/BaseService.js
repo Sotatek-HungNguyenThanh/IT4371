@@ -2,7 +2,13 @@ angular.module('BaseService', [])
     .factory('BaseService', function ($http) {
 
         return {
-
+            getAccountInfo : function (url) {
+                return $http({
+                    method: 'POST',
+                    url: url,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
+            },
         }
     })
     .factory('socket', function ($rootScope) {

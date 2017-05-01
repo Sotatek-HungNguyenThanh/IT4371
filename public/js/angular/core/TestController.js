@@ -14,4 +14,4 @@ var TestController = BaseClass.extend({
     },
 
 },  ['BaseService',  '$scope', '$rootScope', 'socket']);
-myApp.controller('TestController', TestController);
+userApp.controller('TestController', TestController);
