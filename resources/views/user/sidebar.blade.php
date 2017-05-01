@@ -29,8 +29,8 @@
     </li>
     <li class="xn-title">Transaction</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thanh toán</span></a>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
+        <a href="/pay"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thanh toán</span></a>
+        <a href="/transfer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
     </li>
 </ul>
 <script>

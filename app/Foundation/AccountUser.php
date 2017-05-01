@@ -4,6 +4,7 @@ namespace App\Foundation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -45,6 +46,7 @@ trait AccountUser
     }
 
     public function updateAccountInfo(Request $request){
+        DB::beginTransaction();
         try {
             $params = $request->all();
             $user = $this->model()->firstOrNew(['email' => $this->guard()->user()->email]);
@@ -53,8 +55,10 @@ trait AccountUser
             $user->telephone = $params['telephone'];
             $user->save();
             $request->session()->flash('alert-success', 'Information update!');
+            DB::commit();
             return redirect()->back();
         }catch (Exception $e){
+            DB::rollback();
             Log::error($e->getMessage());
             $errors = [
                 'alert-error' => 'Error! Information not update'

@@ -8,6 +8,26 @@ angular.module('UserService', [])
                     url: '/get-bank-account-info',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
+            },
+
+            createPayTransaction: function (data) {
+                var params = { params: data };
+                return $http({
+                    method: 'POST',
+                    url: '/create-pay-transaction',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(params)
+                });
+            },
+
+            createTransferTransaction: function (data) {
+                var params = { params: data };
+                return $http({
+                    method: 'POST',
+                    url: '/create-transfer-transaction',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(params)
+                });
             }
         };
         return angular.extend(BaseService, UserService);

@@ -176,6 +176,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\AdminServiceProvider::class,
+        App\Providers\StaffServiceProvider::class,
+        App\Providers\UserServiceProvider::class,
 
     ],
 
@@ -225,6 +228,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'AdminService' => App\Facades\AdminService::class,
+        'StaffService' => App\Facades\StaffService::class,
+        'UserService' => App\Facades\UserService::class,
 
     ],
 

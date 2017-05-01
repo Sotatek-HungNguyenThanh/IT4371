@@ -11,6 +11,8 @@ namespace App\Http\Controllers\Staff;
 
 use App\Bank_Account;
 use App\BankAccount;
+use App\Card;
+use App\Consts;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Utils;
@@ -39,9 +41,16 @@ class StaffController extends Controller
 
             $bankAccount = new BankAccount();
             $bankAccount->user_id = $user->id;
-            $bankAccount->account_number = Utils::createDigitNumber();
+            $bankAccount->account_number =  Utils::createBankNumber();
             $bankAccount->balance = $params["balance"];
             $bankAccount->save();
+
+
+            $card = new Card();
+            $card->card_number = Utils::createCardNumber();
+            $card->bank_account_id = $bankAccount->id;
+            $card->user_id = $user->id;
+            $card->save();
             DB::commit();
             $request->session()->flash('alert-success', 'Password change success!');
             return redirect()->back();

@@ -17,9 +17,10 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->enum('type', ['deposit', 'withdraw', 'transfer']);
             $table->integer('sender_id');
-            $table->integer('receiver_id')->nullable();
-            $table->integer('card_id');
-            $table->integer('bank_account_id');
+            $table->string('receiver_name');
+            $table->integer('card_id')->nullable();
+            $table->string("bank_account_number")->nullable();
+            $table->integer('bank_account_id')->nullable();
             $table->string('amount');
             $table->text('content')->nullable();
             $table->date('date');

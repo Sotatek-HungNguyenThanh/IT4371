@@ -1,4 +1,4 @@
-<ul class="x-navigation x-navigation-horizontal x-navigation-panel" ng-controller="BankAccountInfoController as controller">
+<ul class="x-navigation x-navigation-horizontal x-navigation-panel" ng-controller="NotificationController as controller" ng-cloak>
     <li class="xn-icon-button">
         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
     </li>
@@ -7,12 +7,12 @@
     </li>
     <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-comments"></span></a>
-        <div class="informer informer-danger">4</div>
+        <div class="informer informer-danger">@{{ controller.notifications.length }}</div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
             <div class="panel-heading">
                 <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
                 <div class="pull-right">
-                    <span class="label label-danger">4 new</span>
+                    <span class="label label-danger">@{{ controller.notifications.length }} new</span>
                 </div>
             </div>
             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
@@ -46,14 +46,32 @@
             </div>
         </div>
     </li>
-    <li class="xn-icon-button pull-right">
-        <div style="font-size: 20px; color: white; padding-top: 12px; margin-right: 22px;">
+    <li class="xn-icon-text pull-right">
+        <div class="text-info-account">
             <span> Số dư: @{{ controller.bankAccount.balance | number }}</span>
         </div>
     </li>
-    <li class="xn-icon-button pull-right">
-        <div style="font-size: 20px; color: white; padding-top: 12px; margin-right: 22px;">
+    <li class="xn-icon-text pull-right">
+        <div class="text-info-account">
             <span>Số tài khoản: @{{ controller.bankAccount.account_number }}</span>
         </div>
     </li>
 </ul>
+<style>
+    .text-info-account{
+        font-size: 20px;
+        color: white;
+        padding-top: 12px;
+        margin-right: 22px;
+    }
+    @media only screen and (max-width: 1024px) {
+        .x-navigation.x-navigation-panel li.xn-icon-text{
+            width: auto;
+        }
+        .text-info-account{
+            font-size: 11.2px;
+            padding-top: 20px;
+            margin-right: 6px;
+        }
+    }
+</style>

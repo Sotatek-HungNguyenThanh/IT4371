@@ -29,6 +29,70 @@
             color: #555;
         }
     </style>
+    <style>
+        input.form-control,
+        textarea.form-control,
+        select.form-control{
+            border-radius: 2px;
+            padding: 10px 15px;
+            height: auto;
+            font-size: 1em;
+            line-height: auto;
+            border: 1px solid #c8d1d3;
+            background-color: transparent;
+            box-shadow: none;
+            margin-bottom: 15px;
+        }
+        .container-content{
+            width: 100%;
+            background-color: #FFF;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px #c8d1d3;
+        }
+        .container-header{
+            padding: 30px;
+            font-size: 1.1em;
+            font-weight: 400;
+            border-bottom: 1px solid #dfe6e8;
+            border-left: 0px solid transparent;
+            color: #666;
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+        .container-body{
+            padding: 30px;
+        }
+        .form-horizontal .form-group {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .btn {
+            padding: 10px 30px;
+            border-radius: 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 3px;
+            box-shadow: 0 2px 3px rgba(223, 230, 232, 0.3);
+            margin-bottom: 5px;
+            transition: all .3s ease;
+        }
+        .btn.btn-primary {
+            border-color: #095077;
+            border-bottom-color: #043D5D;
+            background-color: #095077;
+            box-shadow: 0 2px 3px rgba(9, 80, 119, 0.3);
+        }
+    </style>
     <!-- EOF CSS INCLUDE -->
     @yield("css")
     <script type="text/javascript" src="/js/template/plugins/jquery/jquery.min.js"></script>
@@ -41,13 +105,14 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
     <script type="text/javascript" src="/js/angular/user/UserService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
-    <script type="text/javascript" src="/js/angular/user/BankAccountInfoController.js"></script>
+    <script type="text/javascript" src="/js/angular/user/NotificationController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
     <script>
         $.ajaxSetup({
@@ -59,7 +124,7 @@
     @yield("script")
 </head>
 <body>
-<div class="page-container" ng-app="userApp">
+<div class="page-container" ng-app="userApp" ng-cloak>
     <div class="page-sidebar">
         <!-- START X-NAVIGATION -->
     @include('user.sidebar')

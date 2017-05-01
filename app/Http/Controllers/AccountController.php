@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 namespace App\Http\Controllers;
 
 
+use App\Facades\UserService;
 use App\Foundation\AccountUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -33,10 +34,7 @@ class AccountController extends Controller
 
     public function getBankAccountInfo(){
         $user = $this->guard()->user();
-        $bankAccountInfo = User::join('bank_accounts', 'bank_accounts.user_id', 'users.id')
-            ->where('users.id', $user->id)
-            ->select('bank_accounts.account_number', 'bank_accounts.balance')
-            ->first();
+        $bankAccountInfo = UserService::getBankAccountInfo($user);
         return $bankAccountInfo;
     }
 }
