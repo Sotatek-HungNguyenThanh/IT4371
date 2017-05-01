@@ -71,15 +71,17 @@ class UserService
         $userID = $this->guard()->user()->id;
         $cardInfo =  Card::where('user_id', $userID)->first();
 
-        $historyTransactions =Transaction::join('users as sender', 'sender.id', 'transactions.sender_id')
+        $historyTransactions =Transaction::leftJoin('users as sender', 'sender.id', 'transactions.sender_id')
             ->leftJoin('cards', 'cards.id', 'transactions.card_id')
             ->leftJoin('bank_accounts', 'bank_accounts.id', 'transactions.bank_account_id')
-            ->select('transactions.id as transaction_id', 'transactions.type', 'sender.name',
+            ->select('transactions.id as transaction_id', 'transactions.type',
+                'sender.name', 'transactions.sender_name', 'transactions.sender_id',
                 'receiver_name', 'cards.card_number', 'transactions.bank_account_number',
                 'bank_accounts.account_number', 'transactions.amount', 'transactions.date', 'transactions.content')
             ->where('sender_id', $userID)
             ->orWhere('transactions.bank_account_id', $cardInfo["bank_account_id"])
-            ->orderBy('transactions.date', 'desc')
+            ->orderBy('transactions.date', 'asc')
+            ->orderBy('transactions.created_at', 'asc')
             ->get();
         return $historyTransactions;
     }

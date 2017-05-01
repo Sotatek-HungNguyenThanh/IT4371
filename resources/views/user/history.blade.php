@@ -43,7 +43,7 @@
                             <td>@{{ $index + 1 }}</td>
                             <td>@{{ row.date | transaction_date | date : 'yyyy/MM/dd' }}</td>
                             <td>@{{ row.type | type_transaction }}</td>
-                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.sender_id ? row.name : row.sender_name  }}</td>
                             <td>@{{ row.receiver_name }}</td>
                             <td>@{{ row.account_number ? row.account_number : row.bank_account_number }}</td>
                             <td>@{{ row.amount | number }}</td>
