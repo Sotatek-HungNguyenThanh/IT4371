@@ -1,4 +1,4 @@
-<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+<ul class="x-navigation x-navigation-horizontal x-navigation-panel" ng-controller="BankAccountInfoController as controller">
     <li class="xn-icon-button">
         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
     </li>
@@ -48,12 +48,12 @@
     </li>
     <li class="xn-icon-button pull-right">
         <div style="font-size: 20px; color: white; padding-top: 12px; margin-right: 22px;">
-            <span>Số tài khoản: XXXXXX</span>
+            <span> Số dư: @{{ controller.bankAccount.balance | number }}</span>
         </div>
     </li>
     <li class="xn-icon-button pull-right">
         <div style="font-size: 20px; color: white; padding-top: 12px; margin-right: 22px;">
-            <span> Số dư: XXXXXX</span>
+            <span>Số tài khoản: @{{ controller.bankAccount.account_number }}</span>
         </div>
     </li>
 </ul>

@@ -106,7 +106,7 @@
                                         <input type="email" name="email" class="form-control" placeholder="Email" disabled
                                                ng-model="controller.account.email">
                                         <input type="text" class="form-control" placeholder="Điện thoại"
-                                               name="telephone" pattern="[0-9]{10,11}"
+                                               name="telephone" pattern="[0-9]{10,11}" title="Telephone is between 10 and 11 digit"
                                                minlength="10" maxlength="11" required ng-model="controller.account.telephone">
                                         <input type="text" name="address" class="form-control" placeholder="Address"
                                                ng-model="controller.account.address">

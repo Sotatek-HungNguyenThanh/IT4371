@@ -1,5 +1,5 @@
 angular.module('StaffService', [])
-    .factory('StaffService', function (BaseService) {
+    .factory('StaffService', function ($http, BaseService) {
 
         var StaffService = {
 

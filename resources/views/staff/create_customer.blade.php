@@ -2,21 +2,18 @@
 
 
 @section('title')
-    Update Info
+    Create Customer
 @endsection
 
-@section('script')
-    <script type="text/javascript" src="/js/angular/staff/AccountController.js"></script>
-@endsection
 @section('page_content')
-    <div class="row" ng-controller="AccountController as controller">
+    <div class="row">
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="container-content">
-                    <form action="/staff/update-account-info" method="post">
+                    <form action="/staff/create-customer" method="post">
                         {{ csrf_field() }}
                         <div class="container-header">
-                            Thông tin cá nhân
+                            Tạo khách hàng mới
                         </div>
                         <div class="container-body">
                             @if(Session::has('alert-success'))
@@ -35,23 +32,18 @@
                             @endif
                             <div class="row">
                                 <div class="col-md-9">
-                                    <div class="col-md-9">
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required
-                                               ng-model="controller.account.name">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" disabled
-                                               ng-model="controller.account.email">
-                                        <input type="text" class="form-control" placeholder="Điện thoại"
-                                               name="telephone" pattern="[0-9]{10,11}" title="Telephone is between 10 and 11 digit"
-                                               minlength="10" maxlength="11" required ng-model="controller.account.telephone">
-                                        <input type="text" name="address" class="form-control" placeholder="Address"
-                                               ng-model="controller.account.address">
-                                    </div>
+                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                    <input type="email" name="email"  class="form-control" placeholder="Email" required>
+                                    <input type="text" name="telephone"  class="form-control"
+                                           minlength="10" maxlength="11" pattern="[0-9]{10,11}" title="Telephone is between 10 and 11 digit" placeholder="Telephone">
+                                    <input type="text" name="address"  class="form-control" placeholder="Address">
+                                    <input type="text" name="balance" pattern="[0-9]*" title="Balance is number"  class="form-control" placeholder="Balance" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-9">
-                                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                        <button type="submit" class="btn btn-primary">Đăng ký</button>
                                     </div>
                                 </div>
                             </div>

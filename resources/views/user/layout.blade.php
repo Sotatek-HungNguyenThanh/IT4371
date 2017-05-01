@@ -47,6 +47,7 @@
     <script type="text/javascript" src="/js/angular/user/UserService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
+    <script type="text/javascript" src="/js/angular/user/BankAccountInfoController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
     <script>
         $.ajaxSetup({

@@ -66,6 +66,10 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
 
     Route::post('get-account-info', 'Staff\AccountController@getAccountInfo');
 
+    Route::get('create-customer', 'Staff\StaffController@getCreateCustomerPage');
+
+    Route::post('create-customer', 'Staff\StaffController@createCustomer');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -85,6 +89,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('get-account-info', 'AccountController@getAccountInfo');
 
     Route::post('update-account-info', 'AccountController@updateAccountInfo');
+
+    Route::post('get-bank-account-info', 'AccountController@getBankAccountInfo');
 
 });
 
