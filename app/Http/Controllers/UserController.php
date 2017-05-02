@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BankAccount;
 use App\Card;
 use App\Consts;
+use App\Facades\RedisService;
 use App\Facades\UserService;
 use App\Transaction;
 use Carbon\Carbon;
@@ -39,8 +40,8 @@ class UserController extends Controller
                 return array("status" => Consts::ERROR, "message" => "Invalid params");
             }
 
-            UserService::createPayTransaction($params->bank_account->card_id, $bankAccount, $pay_transaction);
-
+            $transaction = UserService::createPayTransaction($params->bank_account->card_id, $bankAccount, $pay_transaction);
+            RedisService::publishWithdraw($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -62,8 +63,8 @@ class UserController extends Controller
                 return array("status" => Consts::ERROR, "message" => "Invalid params");
             }
 
-            UserService::createTransferTransaction($bankAccount, $transferTransaction);
-
+            $transaction = UserService::createTransferTransaction($bankAccount, $transferTransaction);
+            RedisService::publishTransfer($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){

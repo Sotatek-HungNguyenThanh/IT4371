@@ -1,6 +1,6 @@
 var PayController = BaseController.extend({
 
-    initialize: function ($super, service, $scope) {
+    initialize: function ($super, service, $scope, socket) {
         $super(service);
         this.scope = $scope;
         this.getBankAccountInfo();
@@ -37,5 +37,5 @@ var PayController = BaseController.extend({
 
 
 
-}, ['UserService', '$scope']);
+}, ['UserService', '$scope', 'socket']);
 userApp.controller('PayController', PayController);

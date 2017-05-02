@@ -179,6 +179,7 @@ return [
         App\Providers\AdminServiceProvider::class,
         App\Providers\StaffServiceProvider::class,
         App\Providers\UserServiceProvider::class,
+        App\Providers\RedisServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'AdminService' => App\Facades\AdminService::class,
         'StaffService' => App\Facades\StaffService::class,
         'UserService' => App\Facades\UserService::class,
+        'RedisService' => App\Facades\RedisService::class,
 
     ],
 

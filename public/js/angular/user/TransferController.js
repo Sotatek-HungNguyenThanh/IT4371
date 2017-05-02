@@ -1,6 +1,6 @@
 var TransferController = BaseController.extend({
 
-    initialize: function ($super, service, $scope) {
+    initialize: function ($super, service, $scope, socket) {
         $super(service);
         this.scope = $scope;
         this.getBankAccountInfo();
@@ -38,10 +38,5 @@ var TransferController = BaseController.extend({
             .error(this.onError.bind(this));
     }
 
-
-
-
-
-
-}, ['UserService', '$scope']);
+}, ['UserService', '$scope', 'socket']);
 userApp.controller('TransferController', TransferController);

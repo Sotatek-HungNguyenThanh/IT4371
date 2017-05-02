@@ -43,6 +43,7 @@ class UserService
         if(isset($payTransaction->content))
             $transaction->content = $payTransaction->content;
         $transaction->save();
+        return $transaction;
     }
 
     public function createTransferTransaction($bankAccount, $transferTransaction){
@@ -62,6 +63,7 @@ class UserService
         if(isset($transferTransaction->content))
             $transaction->content = $transferTransaction->content;
         $transaction->save();
+        return $transaction;
     }
 
     protected function guard(){
@@ -98,6 +100,7 @@ class UserService
         if(isset($depositTransaction->content))
             $transaction->content = $depositTransaction->content;
         $transaction->save();
+        return $transaction;
     }
 
     public function depositBankAccount($bankAccountID, $amount){

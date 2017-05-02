@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Staff;
 use App\BankAccount;
 use App\Card;
 use App\Consts;
+use App\Facades\RedisService;
 use App\Facades\StaffService;
 use App\Facades\UserService;
 use App\Http\Controllers\Controller;
@@ -72,8 +73,8 @@ class StaffController extends Controller
             }
             $bankAccount = UserService::depositBankAccount($bankAccount->id, $depositTransaction->amount);
 
-            UserService::createDepositTransaction($bankAccount, $depositTransaction);
-
+            $transaction = UserService::createDepositTransaction($bankAccount, $depositTransaction);
+            RedisService::publishDeposit($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){

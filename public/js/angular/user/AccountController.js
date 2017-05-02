@@ -1,6 +1,6 @@
 var AccountController = BaseController.extend({
     urlAccountInfo: "/get-account-info",
-    initialize: function ($super, service) {
+    initialize: function ($super, service, socket) {
         $super(service);
         this.getAccountInfo();
     },
@@ -16,5 +16,5 @@ var AccountController = BaseController.extend({
 
 
 
-}, ['UserService']);
+}, ['UserService', 'socket']);
 userApp.controller('AccountController', AccountController);
