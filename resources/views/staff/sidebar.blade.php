@@ -31,14 +31,14 @@
         <a href="/staff/create-customer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm khách hàng</span></a>
     </li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm người dùng chung thẻ</span></a>
+        <a href="/staff/add-other-customer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm người dùng chung thẻ</span></a>
     </li>
     <li>
         <a href="/staff/add-money"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm tiền vào tài khoản</span></a>
     </li>
 
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
+        <a href="/staff/transfer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
     </li>
 </ul>
 <script>

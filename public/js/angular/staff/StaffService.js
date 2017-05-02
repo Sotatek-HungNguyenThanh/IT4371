@@ -10,6 +10,16 @@ angular.module('StaffService', [])
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(params)
                 });
+            },
+
+            createTransferTransaction: function (data) {
+                var params = { params: data };
+                return $http({
+                    method: 'POST',
+                    url: '/staff/create-transfer-transaction',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(params)
+                });
             }
         };
         return angular.extend(BaseService, StaffService);

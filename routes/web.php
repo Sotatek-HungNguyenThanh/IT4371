@@ -74,6 +74,14 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
 
     Route::post('/deposit-money-account', 'Staff\StaffController@depositMoneyAccount');
 
+    Route::get('/transfer', 'Staff\StaffController@getTransferPage');
+
+    Route::post('create-transfer-transaction', 'Staff\StaffController@createTransferTransaction');
+
+    Route::post('add-other-customer', 'Staff\StaffController@addOtherCustomer');
+
+    Route::get('add-other-customer', 'Staff\StaffController@getAddOtherCustomerPage');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Auth;
 class UserService
 {
     public function getBankAccountInfo($user){
-        $bankAccountInfo = User::join('bank_accounts', 'bank_accounts.user_id', 'users.id')
-            ->join('cards', 'bank_accounts.id', '=', 'cards.bank_account_id')
-            ->where('users.id', $user->id)
+        $card = Card::where("user_id", $user->id)->first();
+
+        $bankAccountInfo = BankAccount::join('cards', 'bank_accounts.id', '=', 'cards.bank_account_id')
+            ->where('bank_accounts.id', $card->bank_account_id)
             ->select("cards.id as card_id", "cards.card_number" , 'bank_accounts.id as bank_account_id', 'bank_accounts.account_number', 'bank_accounts.balance')
             ->first();
         return $bankAccountInfo;
