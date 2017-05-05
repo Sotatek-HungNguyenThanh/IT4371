@@ -13,6 +13,8 @@ io.on('connection', function (socket) {
     subscriber.subscribe('deposit');
     subscriber.subscribe('withdraw');
     subscriber.subscribe('transfer');
+    subscriber.subscribe('update');
+    subscriber.subscribe('block_account');
 
     subscriber.on("message", function(channel, message) {
         console.log("mew message in queue:"+ message + " channel:" +  channel);

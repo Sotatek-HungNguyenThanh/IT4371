@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -33,6 +34,14 @@ class LoginController extends Controller
 
     public function showLoginForm(){
         return view('user.login');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            ["email" => $request->email, "password" => $request->password, "status" => "active"],
+            $request->has('remember')
+        );
     }
 
 

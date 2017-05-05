@@ -14,6 +14,6 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function showHomePage(){
-        return view('staff.home');
+        return view('staff.update_info');
     }
 }

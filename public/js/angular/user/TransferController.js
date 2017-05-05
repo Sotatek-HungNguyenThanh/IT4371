@@ -33,7 +33,17 @@ var TransferController = BaseController.extend({
         });
         this.service.createTransferTransaction(params)
             .success(function (data) {
-                self.getBankAccountInfo();
+                if(data.status == "success"){
+                    $("#notification_success").modal();
+                    setTimeout(function(){
+                        $("#notification_success").modal("hide");
+                    }, 1000);
+                }else {
+                    $("#notification_error").modal();
+                    setTimeout(function(){
+                        $("#notification_error").modal("hide");
+                    }, 1000);
+                }
             })
             .error(this.onError.bind(this));
     }

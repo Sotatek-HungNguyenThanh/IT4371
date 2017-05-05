@@ -46,6 +46,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::post('get-account-info', 'Admin\AccountController@getAccountInfo');
 
+    Route::get('/list-user', 'Admin\AdminController@showListUserPage');
+
+    Route::get('/list-staff', 'Admin\AdminController@showListStaffPage');
+
+    Route::get('update-status-user/{id}', 'Admin\AdminController@updateStatusUser');
+
+    Route::get('update-status-staff/{id}', 'Admin\AdminController@updateStatusStaff');
 });
 
 Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
@@ -82,11 +89,15 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
 
     Route::get('add-other-customer', 'Staff\StaffController@getAddOtherCustomerPage');
 
+    Route::get('list-user', 'Staff\StaffController@getListUserPage');
+
+    Route::get('update-status-user/{id}', 'Staff\StaffController@updateStatusUser');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/home', 'HomeController@showHomePage');
+    Route::get('/home', 'UserController@showHomePage');
 
     Route::get('/logout', 'LoginController@logout');
 
@@ -116,6 +127,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('get-history-transaction', 'UserController@getHistoryTransaction');
 
+    Route::get('add-money', 'UserController@getAddMoneyPage');
+
+    Route::post('deposit-money-account', 'UserController@depositMoneyAccount');
 });
 
 Route::get('test', 'HomeController@test');

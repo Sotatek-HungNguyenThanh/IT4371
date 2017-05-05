@@ -28,6 +28,23 @@
             background: white;
             color: #555;
         }
+        .modal-content{
+            border-width: 0px;
+            border-radius: 5px;
+        }
+        .modal-body.notification{
+            min-height: 70px;
+        }
+        .modal-body.notification.success{
+            background-color: #d6e9c6;
+            color: #3c763d;
+            border-radius: 5px;
+        }
+        .modal-body.notification.error{
+            background-color: #f2dede;
+            color: #a94442;
+            border-radius: 5px;
+        }
     </style>
     <style>
         input.form-control,
@@ -149,4 +166,6 @@
     </div>
 </div>
 @include('user.logout')
+@include('popup.notification_error')
+@include('popup.notification_success')
 </body>

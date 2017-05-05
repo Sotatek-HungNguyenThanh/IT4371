@@ -12,6 +12,6 @@ namespace App\Http\Controllers\Admin;
 class HomeController
 {
     public function showHomePage(){
-        return view('admin.home');
+        return view('admin.update_info');
     }
 }

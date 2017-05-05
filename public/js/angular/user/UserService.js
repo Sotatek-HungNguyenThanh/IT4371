@@ -36,7 +36,17 @@ angular.module('UserService', [])
                     url: '/get-history-transaction',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
-            }
+            },
+
+            depositMoneyAccount: function (data) {
+                var params = { params: data };
+                return $http({
+                    method: 'POST',
+                    url: '/deposit-money-account',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(params)
+                });
+            },
         };
         return angular.extend(BaseService, UserService);
     })

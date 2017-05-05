@@ -18,4 +18,6 @@ class Consts
 
     const SUCCESS = "success";
     const ERROR = "error";
+
+    const UPDATE = "update";
 }

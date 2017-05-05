@@ -28,6 +28,9 @@
     </li>
     <li class="xn-title">Manage Customers</li>
     <li>
+        <a href="/staff/list-user"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Danh sách khách hàng</span></a>
+    </li>
+    <li>
         <a href="/staff/create-customer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm khách hàng</span></a>
     </li>
     <li>

@@ -1,31 +1,24 @@
-var PayController = BaseController.extend({
+var DepositMoneyController = BaseController.extend({
 
-    initialize: function ($super, service, $scope, socket) {
+    initialize: function ($super, service, $scope) {
         $super(service);
         this.scope = $scope;
-        this.getBankAccountInfo();
         this.currentDate = moment().format("DD/MM/YYYY");
     },
 
-    getBankAccountInfo: function () {
+    depositMoneyAccount: function () {
         var self = this;
-        this.service.getBankAccountInfo()
-            .success(function (data){
-                self.bankAccount = data;
-            })
-            .error(this.onError.bind(this));
-    },
-
-    createPayTransaction: function () {
-        var self = this;
-        if(!this.scope.formPay.$valid){
+        if(!this.scope.formDeposit.$valid){
             return;
         }
         var params = JSON.stringify({
-            bank_account : this.bankAccount,
-            pay_transaction: {amount: this.amount.replace(/,/g, ""), date: this.currentDate, content: this.content}
+            deposit_transaction: {
+                amount: this.amount.replace(/,/g, ""),
+                date: this.currentDate,
+                content: this.content
+            }
         });
-        this.service.createPayTransaction(params)
+        this.service.depositMoneyAccount(params)
             .success(function (data) {
                 if(data.status == "success"){
                     $("#notification_success").modal();
@@ -42,10 +35,5 @@ var PayController = BaseController.extend({
             .error(this.onError.bind(this));
     }
 
-
-
-
-
-
-}, ['UserService', '$scope', 'socket']);
-userApp.controller('PayController', PayController);
+}, ['UserService', '$scope']);
+userApp.controller('DepositMoneyController', DepositMoneyController);

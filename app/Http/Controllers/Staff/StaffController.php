@@ -74,7 +74,7 @@ class StaffController extends Controller
             $bankAccount = UserService::depositBankAccount($bankAccount->id, $depositTransaction->amount);
 
             $transaction = UserService::createDepositTransaction($bankAccount, $depositTransaction);
-            RedisService::publishDeposit($transaction->id);
+            RedisService::publishUpdateAccount($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -132,5 +132,18 @@ class StaffController extends Controller
             ];
             return redirect()->back()->withErrors($errors);
         }
+    }
+
+    public function getListUserPage(){
+        $users = User::get();
+        return view('staff.list_user')->with("users", $users);
+    }
+
+    public function updateStatusUser($id){
+        $user = User::findOrFail($id);
+        $user->status =  $user->status == "active" ? "inactive" : "active";
+        $user->save();
+        RedisService::publishBlockAccount($user);
+        return redirect()->back();
     }
 }

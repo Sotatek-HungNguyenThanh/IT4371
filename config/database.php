@@ -41,10 +41,10 @@ return [
 
         'mysql' => [
             'read' => [
-                'host' => '172.17.0.2',
+                'host' => '172.17.0.3',
             ],
             'write' => [
-                'host' => '172.17.0.3'
+                'host' => '172.17.0.2'
             ],
             'driver' => 'mysql',
             'port' => env('DB_PORT', '3306'),

@@ -29,6 +29,7 @@
     </li>
     <li class="xn-title">Transaction</li>
     <li>
+        <a href="/add-money"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Gửi tiền vào tài khoản</span></a>
         <a href="/pay"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thanh toán</span></a>
         <a href="/transfer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Chuyển khoản</span></a>
     </li>

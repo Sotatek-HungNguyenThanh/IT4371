@@ -28,11 +28,11 @@
     </li>
     <li class="xn-title">Manage Staff</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Staff</span></a>
+        <a href="/admin/list-staff"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Staff</span></a>
     </li>
     <li class="xn-title">Manage Customers</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Customers</span></a>
+        <a href="/admin/list-user"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Customers</span></a>
     </li>
 </ul>
 <script>

@@ -17,7 +17,7 @@ class UserService
 
         $bankAccountInfo = BankAccount::join('cards', 'bank_accounts.id', '=', 'cards.bank_account_id')
             ->where('bank_accounts.id', $card->bank_account_id)
-            ->select("cards.id as card_id", "cards.card_number" , 'bank_accounts.id as bank_account_id', 'bank_accounts.account_number', 'bank_accounts.balance')
+            ->select("cards.id as card_id", "cards.user_id", "cards.card_number" , 'bank_accounts.id as bank_account_id', 'bank_accounts.account_number', 'bank_accounts.balance')
             ->first();
         return $bankAccountInfo;
     }

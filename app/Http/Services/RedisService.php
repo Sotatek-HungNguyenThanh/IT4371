@@ -33,6 +33,15 @@ class RedisService
         $this->publish(Consts::TRANSFER, $notifications);
     }
 
+    public function publishUpdateAccount($transactionID){
+        $notifications = $this->getInfoNotification($transactionID);
+        $this->publish(Consts::UPDATE, $notifications);
+    }
+
+    public function publishBlockAccount($user){
+        $this->publish("block_account", $user);
+    }
+
     protected function getInfoNotification($transactionID){
         return Transaction::leftJoin("bank_accounts as bk1", "bk1.id", "transactions.bank_account_id")
             ->leftJoin("bank_accounts as bk2", "bk2.account_number", "transactions.bank_account_number")

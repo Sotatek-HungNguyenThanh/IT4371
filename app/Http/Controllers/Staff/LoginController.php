@@ -52,4 +52,12 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            ["email" => $request->email, "password" => $request->password, "status" => "active"],
+            $request->has('remember')
+        );
+    }
 }

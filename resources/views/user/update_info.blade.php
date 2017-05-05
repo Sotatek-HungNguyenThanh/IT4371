@@ -24,9 +24,14 @@
                         </div>
                         <div class="container-body">
                             @if(Session::has('alert-success'))
-                                <div class="alert alert-success">
-                                    <strong>Success!</strong> {{Session::get('alert-success') }}
-                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#notification_success").modal();
+                                        setTimeout(function(){
+                                            $("#notification_success").modal("hide");
+                                        }, 1000);
+                                    });
+                                </script>
                             @endif
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
