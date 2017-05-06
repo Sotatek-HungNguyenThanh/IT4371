@@ -18,15 +18,17 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->truncate();
 
         $user = new User();
-        $user->name = "User";
+        $user->name = "User1";
         $user->email = "user1@gmail.com";
         $user->password = bcrypt("a");
+        $user->telephone = '0973241196';
+        $user->address = 'Ha Noi';
         $user->save();
 
         $bankAccount = new BankAccount();
         $bankAccount->user_id = $user->id;
         $bankAccount->account_number =  Utils::createBankNumber();
-        $bankAccount->balance = "10000";
+        $bankAccount->balance = "100000000000";
         $bankAccount->save();
 
 

@@ -8,7 +8,7 @@
 @section('css')
     <style>
         table{
-            width: 100%;
+            width: 1065px;
             border-spacing: 1px;
             border: 1px solid #c4c4c4;
             margin-top: 30px;
@@ -168,6 +168,28 @@
                 <div class="container-header">
                     Danh sách khách hàng
                 </div>
+                @if(Session::has('alert-success'))
+                    <script>
+                        $(document).ready(function () {
+                            $("#message_success").html("Success!");
+                            $("#notification_success").modal();
+                            setTimeout(function(){
+                                $("#notification_success").modal("hide");
+                            }, 1000);
+                        });
+                    </script>
+                @endif
+                @if (count($errors) > 0)
+                    <script>
+                        $(document).ready(function () {
+                            $("#message_error").html("Error!");
+                            $("#notification_error").modal();
+                            setTimeout(function(){
+                                $("#notification_error").modal("hide");
+                            }, 1000);
+                        });
+                    </script>
+                @endif
                 <table>
                     <thead>
                     <tr>

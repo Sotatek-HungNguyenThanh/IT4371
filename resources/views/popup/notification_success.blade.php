@@ -3,7 +3,6 @@
         <div class="modal-content">
             <div class="modal-body notification success">
                 <div class="" id="message_success" style="text-align: center;font-size: 22px;margin-top: 2px;">
-                    SUCCESS!
                 </div>
             </div>
         </div>

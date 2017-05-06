@@ -4,7 +4,16 @@ var PayController = BaseController.extend({
         $super(service);
         this.scope = $scope;
         this.getBankAccountInfo();
+        var self = this;
         this.currentDate = moment().format("DD/MM/YYYY");
+        socket.on('transaction', function (data) {
+            var params = JSON.parse(data)[0];
+            var bank_account_number = self.bankAccount.account_number;
+            if(bank_account_number != params.account_number) {
+                return;
+            }
+            self.bankAccount.balance = params.balance;
+        });
     },
 
     getBankAccountInfo: function () {
@@ -28,15 +37,9 @@ var PayController = BaseController.extend({
         this.service.createPayTransaction(params)
             .success(function (data) {
                 if(data.status == "success"){
-                    $("#notification_success").modal();
-                    setTimeout(function(){
-                        $("#notification_success").modal("hide");
-                    }, 1000);
+                    self.notification(data.status, "Giao dịch thành công!");
                 }else {
-                    $("#notification_error").modal();
-                    setTimeout(function(){
-                        $("#notification_error").modal("hide");
-                    }, 1000);
+                    self.notification(data.status, "Giao dịch thất bại!");
                 }
             })
             .error(this.onError.bind(this));

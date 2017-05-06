@@ -21,15 +21,9 @@ var DepositMoneyController = BaseController.extend({
         this.service.depositMoneyAccount(params)
             .success(function (data) {
                 if(data.status == "success"){
-                    $("#notification_success").modal();
-                    setTimeout(function(){
-                        $("#notification_success").modal("hide");
-                    }, 1000);
+                    self.notification(data.status, "Giao dịch thành công!");
                 }else {
-                    $("#notification_error").modal();
-                    setTimeout(function(){
-                        $("#notification_error").modal("hide");
-                    }, 1000);
+                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản!");
                 }
             })
             .error(this.onError.bind(this));

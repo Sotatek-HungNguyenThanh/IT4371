@@ -39,6 +39,38 @@
         }
     </style>
     <style>
+        .modal-backdrop.in{
+            z-index: 1;
+        }
+        .modal-dialog{
+            z-index: 10;
+        }
+        .modal-body {
+            min-height: 290px;
+        }
+        .form-control[disabled], .form-control[readonly]{
+            background: white;
+            color: #555;
+        }
+        .modal-content{
+            border-width: 0px;
+            border-radius: 5px;
+        }
+        .modal-body.notification{
+            min-height: 70px;
+        }
+        .modal-body.notification.success{
+            background-color: #d6e9c6;
+            color: #3c763d;
+            border-radius: 5px;
+        }
+        .modal-body.notification.error{
+            background-color: #f2dede;
+            color: #a94442;
+            border-radius: 5px;
+        }
+    </style>
+    <style>
         input.form-control, textarea.form-control {
             border-radius: 2px;
             padding: 10px 15px;
@@ -155,4 +187,6 @@
     </div>
 </div>
 @include('admin.logout')
+@include('popup.notification_error')
+@include('popup.notification_success')
 </body>

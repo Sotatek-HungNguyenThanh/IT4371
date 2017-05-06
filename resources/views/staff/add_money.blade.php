@@ -18,14 +18,6 @@
                             Thêm tiền vào tài khoản
                         </div>
                         <div class="container-body">
-                                <div class="alert alert-success" ng-show="controller.status == 'success'">
-                                    <strong>Success!</strong> thêm tiền vào tài khoản thành công!
-                                </div>
-                                <div class="alert alert-danger" ng-show="controller.status == 'error'">
-                                    <ul>
-                                        <li>Số tài khoản không đúng</li>
-                                    </ul>
-                                </div>
                             <div class="row">
                                 <div class="col-md-9">
                                     <span>Người gửi:</span>

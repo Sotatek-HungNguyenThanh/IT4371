@@ -8,7 +8,7 @@
 @section('css')
     <style>
         table{
-            width: 100%;
+            width: 1065px;
             border-spacing: 1px;
             border: 1px solid #c4c4c4;
             margin-top: 30px;
@@ -66,19 +66,19 @@
         }
 
         table thead .column-second {
-            width: 10%;
+            width: 13%;
         }
 
         table thead .column-third {
-            width: 10%;
+            width: 13%;
         }
 
         table thead .column-fourth {
-            width: 8%;
+            width: 10%;
         }
 
         table thead .column-fifth {
-            width: 8%;
+            width: 10%;
         }
 
         table thead .column-sixth {
@@ -91,20 +91,19 @@
 
         table tbody .column-first {
             width: 5%;
-            max-width: 2%;
+            max-width: 5%;
             min-width: 53px;
         }
 
         table tbody .column-second {
-            width: 10%;
-            max-width: 7%;
+            width: 13%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap
         }
 
         table tbody .column-third {
-            width: 10%;
+            width: 13%;
             max-width: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -112,7 +111,7 @@
         }
 
         table tbody .column-fourth {
-            width: 8%;
+            width: 10%;
             text-align: center;
             padding-right: 5px;
             max-width: 11px;
@@ -122,7 +121,7 @@
         }
 
         table tbody .column-fifth {
-            width: 8%;
+            width: 10%;
             text-align: right;
             padding-right: 5px;
             max-width: 10px;
@@ -168,6 +167,28 @@
                 <div class="container-header">
                     Danh sách nhân viên
                 </div>
+                @if(Session::has('alert-success'))
+                    <script>
+                        $(document).ready(function () {
+                            $("#message_success").html("Success!");
+                            $("#notification_success").modal();
+                            setTimeout(function(){
+                                $("#notification_success").modal("hide");
+                            }, 1000);
+                        });
+                    </script>
+                @endif
+                @if (count($errors) > 0)
+                    <script>
+                        $(document).ready(function () {
+                            $("#message_error").html("Error!");
+                            $("#notification_error").modal();
+                            setTimeout(function(){
+                                $("#notification_error").modal("hide");
+                            }, 1000);
+                        });
+                    </script>
+                @endif
                 <table>
                     <thead>
                     <tr>

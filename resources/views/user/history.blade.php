@@ -6,7 +6,7 @@
 @section('css')
     <style>
         table{
-            width: 100%;
+            width: 1065px;
             border-spacing: 1px;
             border: 1px solid #c4c4c4;
             margin-top: 30px;
@@ -190,7 +190,7 @@
                             <td class="column-first">@{{ $index + 1 }}</td>
                             <td class="column-second">@{{ row.date | transaction_date | date : 'yyyy/MM/dd' }}</td>
                             <td class="column-third">@{{ row.type | type_transaction }}</td>
-                            <td class="column-fourth">@{{ row.sender_id ? row.name : row.sender_name  }}</td>
+                            <td class="column-fourth">@{{ row.sender_id ? row.sender_name? row.sender_name : row.name : row.sender_name  }}</td>
                             <td class="column-fifth">@{{ row.receiver_name }}</td>
                             <td class="column-sixth">@{{ row.account_number ? row.account_number : row.bank_account_number }}</td>
                             <td class="column-seventh">@{{ row.amount | number }}</td>

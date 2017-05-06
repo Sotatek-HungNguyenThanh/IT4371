@@ -22,7 +22,11 @@ var DepositMoneyController = BaseController.extend({
         });
         this.service.depositMoneyAccount(params)
             .success(function (data) {
-                self.status = data.status;
+                if(data.status == "success"){
+                    self.notification(data.status, "Giao dịch thành công!");
+                }else {
+                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản!");
+                }
             })
             .error(this.onError.bind(this));
     }

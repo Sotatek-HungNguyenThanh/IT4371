@@ -53,6 +53,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('update-status-user/{id}', 'Admin\AdminController@updateStatusUser');
 
     Route::get('update-status-staff/{id}', 'Admin\AdminController@updateStatusStaff');
+
+    Route::get('manage-database', 'Admin\AdminController@showManageDatabasePage');
+
+    Route::get('backup-database', 'Admin\AdminController@backupDatabase');
+    Route::get('restore-database/{id}', 'Admin\AdminController@restoreDatabase');
 });
 
 Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {

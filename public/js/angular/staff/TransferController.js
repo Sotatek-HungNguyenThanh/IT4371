@@ -23,7 +23,11 @@ var TransferController = BaseController.extend({
         });
         this.service.createTransferTransaction(params)
             .success(function (data) {
-
+                if(data.status == "success"){
+                    self.notification(data.status, "Giao dịch thành công!");
+                }else {
+                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản!");
+                }
             })
             .error(this.onError.bind(this));
     }

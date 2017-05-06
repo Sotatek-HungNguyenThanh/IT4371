@@ -22,6 +22,7 @@
                             @if(Session::has('alert-success'))
                                 <script>
                                     $(document).ready(function () {
+                                        $("#message_success").html("Success!");
                                         $("#notification_success").modal();
                                         setTimeout(function(){
                                             $("#notification_success").modal("hide");
@@ -30,13 +31,15 @@
                                 </script>
                             @endif
                             @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#message_error").html("Error! Mật khẩu không đúng");
+                                        $("#notification_error").modal();
+                                        setTimeout(function(){
+                                            $("#notification_error").modal("hide");
+                                        }, 1000);
+                                    });
+                                </script>
                             @endif
                             <div class="row">
                                 <div class="col-md-9">

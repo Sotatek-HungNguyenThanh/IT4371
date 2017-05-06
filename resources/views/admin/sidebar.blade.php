@@ -34,6 +34,10 @@
     <li>
         <a href="/admin/list-user"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Customers</span></a>
     </li>
+    <li class="xn-title">Manage Database</li>
+    <li>
+        <a href="/admin/manage-database"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Manage Database</span></a>
+    </li>
 </ul>
 <script>
     $(document).ready(function () {
