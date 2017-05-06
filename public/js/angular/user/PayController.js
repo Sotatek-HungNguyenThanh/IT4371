@@ -30,6 +30,9 @@ var PayController = BaseController.extend({
         if(!this.scope.formPay.$valid){
             return;
         }
+        if(parseFloat(self.bankAccount.balance) < parseFloat(self.amount.replace(/,/g, ""))){
+            return;
+        }
         var params = JSON.stringify({
             bank_account : this.bankAccount,
             pay_transaction: {amount: this.amount.replace(/,/g, ""), date: this.currentDate, content: this.content}

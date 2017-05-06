@@ -26,7 +26,7 @@ var TransferController = BaseController.extend({
                 if(data.status == "success"){
                     self.notification(data.status, "Giao dịch thành công!");
                 }else {
-                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản!");
+                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản hoặc số dư không ");
                 }
             })
             .error(this.onError.bind(this));
