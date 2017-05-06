@@ -9,6 +9,14 @@ angular.module('BaseService', [])
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
             },
+
+            getAccountUser: function (url) {
+                return $http({
+                    method: 'POST',
+                    url: url,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
+            }
         }
     })
     .factory('socket', function ($rootScope) {

@@ -21,6 +21,7 @@ use App\Utils;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -74,7 +75,7 @@ class StaffController extends Controller
             $bankAccount = UserService::depositBankAccount($bankAccount->id, $depositTransaction->amount);
 
             $transaction = UserService::createDepositTransaction($bankAccount, $depositTransaction);
-            RedisService::publishUpdateAccount($transaction->id);
+            RedisService::publishTransaction($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -143,7 +144,11 @@ class StaffController extends Controller
         $user = User::findOrFail($id);
         $user->status =  $user->status == "active" ? "inactive" : "active";
         $user->save();
-        RedisService::publishBlockAccount($user);
+        RedisService::publishBlockAccountUser($user);
         return redirect()->back();
+    }
+
+    public function getUserInfo(){
+        return Auth::guard("staff")->user();
     }
 }

@@ -45,7 +45,7 @@ class UserController extends Controller
             }
 
             $transaction = UserService::createPayTransaction($params->bank_account->card_id, $bankAccount, $pay_transaction);
-            RedisService::publishUpdateAccount($transaction->id);
+            RedisService::publishTransaction($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -68,7 +68,7 @@ class UserController extends Controller
             }
 
             $transaction = UserService::createTransferTransaction($bankAccount, $transferTransaction);
-            RedisService::publishUpdateAccount($transaction->id);
+            RedisService::publishTransaction($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -117,7 +117,7 @@ class UserController extends Controller
                 $transaction->content = $depositTransaction->content;
             $transaction->save();
 
-            RedisService::publishUpdateAccount($transaction->id);
+            RedisService::publishTransaction($transaction->id);
             DB::commit();
             return array("status" => Consts::SUCCESS, "message" => "create transaction success");
         }catch (Exception $e){
@@ -125,5 +125,9 @@ class UserController extends Controller
             Log::error($e->getMessage());
             return array("status" => Consts::ERROR, "message" => $e->getMessage());
         }
+    }
+
+    public function getUserInfo(){
+        return Auth::guard()->user();
     }
 }

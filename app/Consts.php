@@ -19,5 +19,7 @@ class Consts
     const SUCCESS = "success";
     const ERROR = "error";
 
-    const UPDATE = "update";
+    const TRANSACTION = "transaction";
+    const BLOCK_ACCOUNT_USER = "block_account_user";
+    const BLOCK_ACCOUNT_STAFF = "block_account_staff";
 }

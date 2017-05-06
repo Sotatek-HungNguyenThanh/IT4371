@@ -10,11 +10,9 @@ io.on('connection', function (socket) {
     var subscriber = redis.createClient();
     // var publisher = redis.createClient();
 
-    subscriber.subscribe('deposit');
-    subscriber.subscribe('withdraw');
-    subscriber.subscribe('transfer');
-    subscriber.subscribe('update');
-    subscriber.subscribe('block_account');
+    subscriber.subscribe('transaction');
+    subscriber.subscribe('block_account_user');
+    subscriber.subscribe('block_account_staff');
 
     subscriber.on("message", function(channel, message) {
         console.log("mew message in queue:"+ message + " channel:" +  channel);

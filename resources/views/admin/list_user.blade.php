@@ -191,9 +191,9 @@
                             <td class="column-sixth">{{$user->address}}</td>
                             <td class="column-seventh">
                                 @if($user->status == "active")
-                                    <a href="/staff/update-status-user/{{$user->id}}"><button type="button" class="btn btn-success" style="height: 37px">Block</button></a>
+                                    <a href="/admin/update-status-user/{{$user->id}}"><button type="button" class="btn btn-success" style="height: 37px">Block</button></a>
                                 @else
-                                    <a href="/staff/update-status-user/{{$user->id}}"><button type="button" class="btn btn-warning" style="height: 37px">Active</button></a>
+                                    <a href="/admin/update-status-user/{{$user->id}}"><button type="button" class="btn btn-warning" style="height: 37px">Active</button></a>
                                 @endif
                             </td>
                         </tr>

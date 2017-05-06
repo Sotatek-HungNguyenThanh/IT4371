@@ -102,6 +102,7 @@
     <script type="text/javascript" src="/js/template/actions.js"></script>
 
 
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
@@ -111,6 +112,8 @@
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
+    <script type="text/javascript" src="/js/angular/staff/NotificationController.js"></script>
+
     <script>
         $.ajaxSetup({
             headers: {

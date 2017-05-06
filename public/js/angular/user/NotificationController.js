@@ -5,7 +5,8 @@ var NotificationController = BaseController.extend({
         this.getBankAccountInfo();
         this.notifications = [];
         var self = this;
-        socket.on('update', function (data) {
+        this.getAccountUser();
+        socket.on('transaction', function (data) {
             var params = JSON.parse(data)[0];
             var bank_account_number = self.bankAccount.account_number;
             if(bank_account_number != params.account_number) {
@@ -14,13 +15,12 @@ var NotificationController = BaseController.extend({
             self.bankAccount.balance = params.balance;
         });
 
-        socket.on('block_account', function (user) {
+        socket.on('block_account_user', function (user) {
             var params = JSON.parse(user);
-            var user_id = self.bankAccount.user_id;
+            var user_id = self.user.id;
             if(user_id == params.id && params.status == "inactive") {
                 location.href = "/logout";
             }
-            self.bankAccount.balance = params.balance;
         });
     },
 
@@ -32,6 +32,15 @@ var NotificationController = BaseController.extend({
             })
             .error(this.onError.bind(this));
     },
+
+    getAccountUser: function(){
+        var self = this;
+        this.service.getAccountUser("/user-info")
+            .success(function (data){
+                self.user = data;
+            })
+            .error(this.onError.bind(this));
+    }
 
 
 

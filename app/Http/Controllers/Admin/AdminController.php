@@ -24,7 +24,7 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->status =  $user->status == "active" ? "inactive" : "active";
         $user->save();
-        RedisService::publishBlockAccount($user);
+        RedisService::publishBlockAccountUser($user);
         return redirect()->back();
     }
 
@@ -32,7 +32,7 @@ class AdminController extends Controller
         $staff = Staff::findOrFail($id);
         $staff->status =  $staff->status == "active" ? "inactive" : "active";
         $staff->save();
-        RedisService::publishBlockAccount($staff);
+        RedisService::publishBlockAccountStaff($staff);
         return redirect()->back();
     }
 }

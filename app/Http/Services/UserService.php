@@ -78,7 +78,7 @@ class UserService
             ->leftJoin('cards', 'cards.id', 'transactions.card_id')
             ->leftJoin('bank_accounts', 'bank_accounts.id', 'transactions.bank_account_id')
             ->select('transactions.id as transaction_id', 'transactions.type',
-                'sender.name', 'transactions.sender_name', 'transactions.sender_id',
+                'transactions.sender_name', 'transactions.sender_name', 'transactions.sender_id',
                 'receiver_name', 'cards.card_number', 'transactions.bank_account_number',
                 'bank_accounts.account_number', 'transactions.amount', 'transactions.date', 'transactions.content')
             ->where('sender_id', $userID)

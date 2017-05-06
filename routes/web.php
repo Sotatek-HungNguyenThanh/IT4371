@@ -93,6 +93,9 @@ Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {
 
     Route::get('update-status-user/{id}', 'Staff\StaffController@updateStatusUser');
 
+    Route::post('/user-info', 'Staff\StaffController@getUserInfo');
+
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -130,6 +133,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('add-money', 'UserController@getAddMoneyPage');
 
     Route::post('deposit-money-account', 'UserController@depositMoneyAccount');
+
+    Route::post('/user-info', 'UserController@getUserInfo');
 });
 
 Route::get('test', 'HomeController@test');
