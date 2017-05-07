@@ -15,6 +15,7 @@ var TransferController = BaseController.extend({
             transfer_transaction: {
                 sender_name: this.sender_name,
                 receiver_name: this.receiver_name,
+                account_number_from: this.account_number_from,
                 account_number: this.account_number,
                 amount: this.amount.replace(/,/g, ""),
                 date: this.currentDate,
@@ -26,7 +27,7 @@ var TransferController = BaseController.extend({
                 if(data.status == "success"){
                     self.notification(data.status, "Giao dịch thành công!");
                 }else {
-                    self.notification(data.status, "Giao dịch thất bại! Sai tài khoản hoặc số dư không ");
+                    self.notification(data.status, "Giao dịch thất bại!" +  data.message);
                 }
             })
             .error(this.onError.bind(this));

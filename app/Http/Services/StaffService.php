@@ -25,12 +25,12 @@ class StaffService
         $transaction->sender_name = $transferTransaction->receiver_name;
         $transaction->receiver_name = $transferTransaction->receiver_name;
 
-        $bankAccount = BankAccount::where('account_number', $transferTransaction->account_number)->first();
+        $bankAccountTo = BankAccount::where('account_number', $transferTransaction->account_number)->first();
 
-        if(empty($bankAccount)){
+        if(empty($bankAccountTo)){
             $transaction->bank_account_number = $transferTransaction->account_number;
         }else{
-            $transaction->bank_account_id =  $bankAccount->id;
+            $transaction->bank_account_id =  $bankAccountTo->id;
             $transaction->bank_account_number = $transferTransaction->account_number;
         }
         $transaction->amount = $transferTransaction->amount;

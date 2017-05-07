@@ -39,9 +39,15 @@ class UserController extends Controller
         try{
             $bank_account = $params->bank_account;
             $pay_transaction = $params->pay_transaction;
+
+            if($bank_account->balance < $pay_transaction->amount){
+                DB::rollback();
+                return array("status" => Consts::ERROR, "message" => "Số dư không đủ");
+            }
             $bankAccount = UserService::withdrawBankAccount($bank_account->bank_account_id, $pay_transaction->amount);
             if(empty($bankAccount)) {
-                return array("status" => Consts::ERROR, "message" => "Invalid params");
+                DB::rollback();
+                return array("status" => Consts::ERROR, "message" => "Số tài khoản không tồn tại");
             }
 
             $transaction = UserService::createPayTransaction($params->bank_account->card_id, $bankAccount, $pay_transaction);
@@ -62,9 +68,13 @@ class UserController extends Controller
             $bank_account = $params->bank_account;
             $transferTransaction = $params->transfer_transaction;
 
+            if($bank_account->balance < $transferTransaction->amount){
+                return array("status" => Consts::ERROR, "message" => "Số dư không đủ");
+            }
             $bankAccount = UserService::withdrawBankAccount($bank_account->bank_account_id, $transferTransaction->amount);
             if(empty($bankAccount)) {
-                return array("status" => Consts::ERROR, "message" => "Invalid params");
+                DB::rollback();
+                return array("status" => Consts::ERROR, "message" => "Số tài khoản không tồn tại");
             }
 
             $transaction = UserService::createTransferTransaction($bankAccount, $transferTransaction);
@@ -99,7 +109,7 @@ class UserController extends Controller
             $data = Card::join('bank_accounts', 'bank_accounts.id', '=', 'cards.bank_account_id')
                 ->join('users', 'users.id', '=', 'cards.user_id')
                 ->select('bank_accounts.id as bank_account_id',
-                    'bank_accounts.account_number as bank_account_number')
+                    'bank_accounts.account_number as bank_account_number', 'bank_accounts.balance')
                 ->where('cards.user_id', $this->guard()->user()->id)
                 ->first();
 

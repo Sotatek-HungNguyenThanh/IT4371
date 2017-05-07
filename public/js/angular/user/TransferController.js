@@ -39,7 +39,7 @@ var TransferController = BaseController.extend({
                 if(data.status == "success"){
                     self.notification(data.status, "Giao dịch thành công!");
                 }else {
-                    self.notification(data.status, "Giao dịch thất bại!");
+                    self.notification(data.status, "Giao dịch thất bại!" +  data.message);
                 }
             })
             .error(this.onError.bind(this));

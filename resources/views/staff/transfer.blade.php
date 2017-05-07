@@ -34,7 +34,10 @@
          <span>Người nhận:</span>
          <input type="text" name="receiver_name" class="form-control"
                 placeholder="Người nhận" required ng-model="controller.receiver_name">
-         <span>Số tài khoản:</span>
+         <span>Từ tài khoản:</span>
+         <input type="text" name="account_number_form" class="form-control"
+                placeholder="Từ tài khoản" ng-model="controller.account_number_from">
+         <span>Đến tài khoản:</span>
          <input type="text" name="account_number" class="form-control"
                 placeholder="Số tài khoản" required ng-model="controller.account_number">
          <span>Số tiền:</span>

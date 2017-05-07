@@ -115,7 +115,9 @@
             text-align: center;
             padding-right: 5px;
             max-width: 11px;
-            position: relative;
+             overflow: hidden;
+             text-overflow: ellipsis;
+             white-space: nowrap
         }
 
          table tbody .column-fifth {

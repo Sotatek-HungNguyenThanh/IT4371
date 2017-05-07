@@ -106,7 +106,7 @@ class UserService
     }
 
     public function depositBankAccount($bankAccountID, $amount){
-        $bankAccount = BankAccount::findOrFail($bankAccountID);
+        $bankAccount = BankAccount::find($bankAccountID);
         $bankAccount->balance =  $bankAccount->balance + $amount;
         $bankAccount->save();
         return $bankAccount;
