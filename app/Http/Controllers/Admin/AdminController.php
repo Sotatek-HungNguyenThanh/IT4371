@@ -61,7 +61,7 @@ class AdminController extends Controller
             $storage->save();
 
             //mysqldump command with account credentials from .env file. storage_path() adds default local storage path
-            $command = "mysqldump --user=" . env('DB_USERNAME') . " --password=" . env('DB_PASSWORD') . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  > " . storage_path() . "/app/database/" . $fileName;
+            $command = "mysqldump --user=" . env('DB_USERNAME_MASTER') . " --password=" . env('DB_PASSWORD_MASTER') . " --host=" . env('DB_HOST_MASTER') . " " . env('DB_DATABASE_MASTER') . "  > " . storage_path() . "/app/database/" . $fileName;
 
             //exec command allows you to run terminal commands from php
             exec($command);
@@ -84,7 +84,7 @@ class AdminController extends Controller
             //set filename with date and time of backup
             $storage = Database::find($id);
             //mysqldump command with account credentials from .env file. storage_path() adds default local storage path
-            $command = "mysql --user=" . env('DB_USERNAME') . " --password=" . env('DB_PASSWORD') . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  < " . $storage->path;
+            $command = "mysql --user=" . env('DB_USERNAME_MASTER') . " --password=" . env('DB_PASSWORD_MASTER') . " --host=" . env('DB_HOST_MASTER') . " " . env('DB_DATABASE_MASTER') . "  < " . $storage->path;
 
             //exec command allows you to run terminal commands from php
             exec($command);

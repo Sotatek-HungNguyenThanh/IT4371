@@ -42,15 +42,19 @@ return [
         'mysql' => [
             'read' => [
                 'host' => '172.17.0.3',
+                'port' => env('DB_PORT_SLAVE', '3306'),
+                'database' => env('DB_DATABASE_SLAVE', 'forge'),
+                'username' => env('DB_USERNAME_SLAVE', 'forge'),
+                'password' => env('DB_PASSWORD_SLAVE', ''),
             ],
             'write' => [
-                'host' => '172.17.0.2'
+                'host' => '172.17.0.2',
+                'port' => env('DB_PORT_MASTER', '3306'),
+                'database' => env('DB_DATABASE_MASTER', 'forge'),
+                'username' => env('DB_USERNAME_MASTER', 'forge'),
+                'password' => env('DB_PASSWORD_MASTER', ''),
             ],
             'driver' => 'mysql',
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
