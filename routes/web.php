@@ -57,7 +57,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('manage-database', 'Admin\AdminController@showManageDatabasePage');
 
     Route::get('backup-database', 'Admin\AdminController@backupDatabase');
+
     Route::get('restore-database/{id}', 'Admin\AdminController@restoreDatabase');
+
+    Route::get('create-customer', 'Admin\AdminController@getCreateCustomerPage');
+
+    Route::post('create-customer', 'Admin\AdminController@createCustomer');
+
+    Route::get('create-staff', 'Admin\AdminController@getCreateStaffPage');
+
+    Route::post('create-staff', 'Admin\AdminController@createStaff');
 });
 
 Route::group(['prefix' => 'staff', 'middleware' => 'staff'], function () {

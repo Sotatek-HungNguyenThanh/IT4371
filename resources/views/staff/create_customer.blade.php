@@ -30,7 +30,7 @@
                             @if (count($errors) > 0)
                                 <script>
                                     $(document).ready(function () {
-                                        $("#message_error").html("Error!");
+                                        $("#message_error").html("Error! Email đã tồn tại");
                                         $("#notification_error").modal();
                                         setTimeout(function(){
                                             $("#notification_error").modal("hide");

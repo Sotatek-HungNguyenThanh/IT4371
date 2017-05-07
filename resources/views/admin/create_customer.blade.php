@@ -1,8 +1,8 @@
-@extends('staff.layout')
+@extends('admin.layout')
 
 
 @section('title')
-    Create Other Customer
+    Create Customer
 @endsection
 
 @section('page_content')
@@ -10,10 +10,10 @@
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="container-content">
-                    <form action="/staff/add-other-customer" method="post">
+                    <form action="/admin/create-customer" method="post">
                         {{ csrf_field() }}
                         <div class="container-header">
-                            Thêm thẻ phụ
+                            Tạo khách hàng mới
                         </div>
                         <div class="container-body">
                             @if(Session::has('alert-success'))
@@ -30,7 +30,7 @@
                             @if (count($errors) > 0)
                                 <script>
                                     $(document).ready(function () {
-                                        $("#message_error").html("Error! Email đã tồn tại hoặc tài khoản không đúng");
+                                        $("#message_error").html("Error! Email đã tồn tại");
                                         $("#notification_error").modal();
                                         setTimeout(function(){
                                             $("#notification_error").modal("hide");
@@ -45,7 +45,7 @@
                                     <input type="text" name="telephone"  class="form-control"
                                            minlength="10" maxlength="11" pattern="[0-9]{10,11}" title="Telephone is between 10 and 11 digit" placeholder="Telephone">
                                     <input type="text" name="address"  class="form-control" placeholder="Address">
-                                    <input type="text" name="account_number" class="form-control" placeholder="Số tài khoản" required>
+                                    <input type="text" name="balance" pattern="[0-9]*" title="Balance is number"  class="form-control" placeholder="Balance" required>
                                 </div>
                             </div>
                             <div class="row">

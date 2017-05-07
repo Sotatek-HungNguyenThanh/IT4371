@@ -26,17 +26,23 @@
         <a href="/admin/update-info"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thay đổi thông tin</span></a>
         <a href="/admin/manage-password"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Quản lý mật khẩu</span></a>
     </li>
-    <li class="xn-title">Manage Staff</li>
-    <li>
-        <a href="/admin/list-staff"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Staff</span></a>
-    </li>
-    <li class="xn-title">Manage Customers</li>
-    <li>
-        <a href="/admin/list-user"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">List Customers</span></a>
-    </li>
     <li class="xn-title">Manage Database</li>
     <li>
         <a href="/admin/manage-database"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Manage Database</span></a>
+    </li>
+    <li class="xn-title">Manage Staff</li>
+    <li>
+        <a href="/admin/create-staff"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm nhân viên</span></a>
+    </li>
+    <li>
+        <a href="/admin/list-staff"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Danh sách nhân viên</span></a>
+    </li>
+    <li class="xn-title">Manage Customers</li>
+    <li>
+        <a href="/admin/create-customer"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Thêm khách hàng</span></a>
+    </li>
+    <li>
+        <a href="/admin/list-user"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Danh sách khách hàng</span></a>
     </li>
 </ul>
 <script>

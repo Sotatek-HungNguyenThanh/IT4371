@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Database;
 use App\Facades\RedisService;
+use App\Facades\StaffService;
 use App\Http\Controllers\Controller;
 use App\Staff;
 use App\User;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
@@ -97,5 +99,61 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($errors);
         }
         return redirect()->back();
+    }
+
+    public function getCreateCustomerPage(){
+        return view('admin.create_customer');
+    }
+
+    public function createCustomer(Request $request){
+        $params =  $request->all();
+        DB::beginTransaction();
+        try {
+            $user = StaffService::createUser($params);
+            $bankAccount = StaffService::createBankAccount($user, $params);
+            StaffService::createCard($bankAccount, $user);
+
+            DB::commit();
+            $request->session()->flash('alert-success', 'Create Customer Success!');
+            return redirect()->back();
+        }catch (Exception $e){
+            DB::rollback();
+            Log::error($e->getMessage());
+
+            $errors = [
+                'alert-error' => 'Account existed!'
+            ];
+            return redirect()->back()->withErrors($errors);
+        }
+    }
+
+    public function getCreateStaffPage(){
+        return view('admin.create_staff');
+    }
+
+    public function createStaff(Request $request){
+        $params =  $request->all();
+        DB::beginTransaction();
+        try {
+            $staff = new Staff();
+            $staff->name = $params["name"];
+            $staff->email = $params["email"];
+            $staff->password = bcrypt("a");
+            $staff->telephone = $params["telephone"];
+            $staff->address = $params["address"];
+            $staff->save();
+
+            DB::commit();
+            $request->session()->flash('alert-success', 'Create Customer Success!');
+            return redirect()->back();
+        }catch (Exception $e){
+            DB::rollback();
+            Log::error($e->getMessage());
+
+            $errors = [
+                'alert-error' => 'Account existed!'
+            ];
+            return redirect()->back()->withErrors($errors);
+        }
     }
 }
